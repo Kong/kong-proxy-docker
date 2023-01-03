@@ -25,6 +25,13 @@ services:
         protocols:
           - https
 
+plugins:
+  - name: tls-metadata-headers
+    service: httpbin-service
+    config:
+      inject_client_cert_details: true
+      client_cert_header_name: X-Forwarded-Client-Cert
+
 certificates:
   - cert: |
       -----BEGIN CERTIFICATE-----

@@ -1,1 +1,2 @@
 V	240113190200Z		100A	unknown	/C=CA/ST=British Columbia/O=Annai/OU=Team Karaboondi/CN=karaboondi.com
+V	240113232134Z		100B	unknown	/C=CA/ST=British Columbia/O=Annai/OU=Team Karaboondi/CN=karaboondi api client

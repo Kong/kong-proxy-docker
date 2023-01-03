@@ -5,8 +5,8 @@ The first task is to generate the root key pair:
 ```shell
 openssl genrsa -aes256 -out private/ca.key.pem 4096
 
-Enter pass phrase for ca.key.pem: experttls: koko
-Verifying - Enter pass phrase for private/ca.key.pem: koko
+Enter pass phrase for ca.key.pem: experttls: xxxx
+Verifying - Enter pass phrase for private/ca.key.pem: xxxx
 ```
 
 Then create a root certificate, signed using the certificates own private key. 
@@ -16,7 +16,7 @@ for the root certificate
 ```shell
 openssl req -config openssl.cfg -key private/ca.key.pem -new -x509 -days 7300 -sha256 -extensions v3_ca -out certs/ca.cert.pem
 
-Enter pass phrase for ca.key.pem: koko
+Enter pass phrase for ca.key.pem: xxxx
 ```
 
 ### The Intermediate Certificate
@@ -25,8 +25,8 @@ We begin nby creating an intermediate key pair within ca/intermediate directory:
 ```shell
 openssl genrsa -aes256 -out intermediate/private/intermediate.key.pem 2048
 
-Enter pass phrase for intermediate.key.pem: koko
-Verifying - Enter pass phrase for intermediate.key.pem: koko
+Enter pass phrase for intermediate.key.pem: xxxx
+Verifying - Enter pass phrase for intermediate.key.pem: xxxx
 ```
 Generate certificate signing request which will need to be signed by the root certificate
 
@@ -50,7 +50,7 @@ openssl genrsa -aes256 -out intermediate/private/server.key.pem 2048
 # Remove password from server key
 openssl rsa -in intermediate/private/server.key.pem -out intermediate/private/server.key.pem
 
-Enter pass phrase for server.key.pem: koko
+Enter pass phrase for server.key.pem: xxxx
 ```
 
 ### Generate Server CSR and Sign the Cert
@@ -75,7 +75,9 @@ Generate Client Key
 ```shell
 openssl genrsa -aes256 -out intermediate/private/client.key.pem 2048
 
-Enter pass phrase for server.key.pem: koko
+# Remove password from client key
+openssl rsa -in intermediate/private/client.key.pem -out intermediate/private/client.key.pem
+Enter pass phrase for client.key.pem: xxxx
 ```
 
 Create Client Certificate Signing Request
@@ -83,7 +85,6 @@ Create Client Certificate Signing Request
 ```shell
 openssl req -config intermediate/openssl.cfg -key intermediate/private/client.key.pem -new -sha256 -out intermediate/csr/client.csr.pem                               ~/dev/pythontls/ca  
 
-Enter pass phrase for intermediate/private/server.key.pem:
 ```
 
 Sign the Client Certificate using the intermediate certificate
