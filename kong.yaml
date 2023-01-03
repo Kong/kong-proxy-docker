@@ -1,0 +1,115 @@
+_format_version: "3.0"
+
+services:
+  - name: gist-service
+    url: https://api.github.com
+    routes:
+      - name: gists-route
+        paths:
+          - /gists
+        hosts:
+          - karaboondi.com
+        protocols:
+          - https
+  - name:  httpbin-service
+    host: host.docker.internal
+    protocol: http
+    port: 8080
+    path: /headers
+    routes:
+      - name: headers-route
+        paths:
+          - /headers
+        hosts:
+          - karaboondi.com
+        protocols:
+          - https
+
+certificates:
+  - cert: |
+      -----BEGIN CERTIFICATE-----
+      MIIEjjCCA3agAwIBAgICEAowDQYJKoZIhvcNAQELBQAwcjELMAkGA1UEBhMCQ0Ex
+      GTAXBgNVBAgMEEJyaXRpc2ggQ29sdW1iaWExDjAMBgNVBAoMBUFubmFpMRgwFgYD
+      VQQLDA9UZWFtIEthcmFib29uZGkxHjAcBgNVBAMMFUFubmFpIEludGVybWVkaWF0
+      ZSBDQTAeFw0yMzAxMDMxOTAyMDBaFw0yNDAxMTMxOTAyMDBaMGsxCzAJBgNVBAYT
+      AkNBMRkwFwYDVQQIDBBCcml0aXNoIENvbHVtYmlhMQ4wDAYDVQQKDAVBbm5haTEY
+      MBYGA1UECwwPVGVhbSBLYXJhYm9vbmRpMRcwFQYDVQQDDA5rYXJhYm9vbmRpLmNv
+      bTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBALllTQ1okpf7ghOrDm+M
+      VY46TOvp+RiuxYUzehWr1JT56QwBB1HOniMhrJZ/oDHb4PW5QJPmhbX08j2U1CId
+      XEgyKYSKXLhwZuVBBeKVvFx5f5gauRNmt7nUfknrNrB7ZqXUznn63lqRyJBVuR+z
+      2Lf1k6ZUKgtPgxBFZEw5V+1CEPpxNhwQlqYcIENMbKUulvraMi+nWMDh6H9RLEYh
+      iYNGuXJfa6TCwAL6RAUKuHOXQVpw2sEGsdowODb9Nc9WkMf6vvaS3LESmqnr27vC
+      LlCNAuLMZ+84QOUrw8ndIT7F+PKVcV5Rgppp7U0VGbOQiMGPsbIal2xT8nhR2ZEM
+      OHsCAwEAAaOCATMwggEvMAkGA1UdEwQCMAAwEQYJYIZIAYb4QgEBBAQDAgZAMDMG
+      CWCGSAGG+EIBDQQmFiRPcGVuU1NMIEdlbmVyYXRlZCBTZXJ2ZXIgQ2VydGlmaWNh
+      dGUwHQYDVR0OBBYEFLDe6rDMzG83W6KTz73kWV6Jq6vkMIGVBgNVHSMEgY0wgYqA
+      FIQ+vykGWM6OP2EhQ11/zxSZ81BDoW6kbDBqMQswCQYDVQQGEwJDQTEZMBcGA1UE
+      CAwQQnJpdGlzaCBDb2x1bWJpYTEOMAwGA1UECgwFQW5uYWkxGDAWBgNVBAsMD1Rl
+      YW0gS2FyYWJvb25kaTEWMBQGA1UEAwwNQW5uYWkgUm9vdCBDQYICEAEwDgYDVR0P
+      AQH/BAQDAgWgMBMGA1UdJQQMMAoGCCsGAQUFBwMBMA0GCSqGSIb3DQEBCwUAA4IB
+      AQA0RI+b4lkYiNHO9/oY3/mqtwiY4iBt5AbbtY0a3tHbvNcfCFzn67lyjxJmDbkL
+      ZGdrjmjShP5IcVnfy32Y3gSQlJRJSA8ra7lSqt9oAsBkYg3nG78JTU3jBtT7Ye8n
+      Xcdov5puOHBDeTrq5AIZMFA0I9YOe6hoBIKFpynsItSt7rRXfwfbUcNn2BAZ6un3
+      1IgUcucstpTwooxAYjr6u6DEGFEjhC16OZtqUqkfiqfaPX922JwdofyjwEgCQMqY
+      GmUF/ogwab+g1pO1VFA/jNJOAZREc+KV2r9FjhiaD2n2hyGKeZNsm4vHM3Q7VEX9
+      QwHD3hnhsYfBbZm06PPY9dmo
+      -----END CERTIFICATE-----
+      -----BEGIN CERTIFICATE-----
+      MIIEvjCCAqagAwIBAgICEAEwDQYJKoZIhvcNAQELBQAwajELMAkGA1UEBhMCQ0Ex
+      GTAXBgNVBAgMEEJyaXRpc2ggQ29sdW1iaWExDjAMBgNVBAoMBUFubmFpMRgwFgYD
+      VQQLDA9UZWFtIEthcmFib29uZGkxFjAUBgNVBAMMDUFubmFpIFJvb3QgQ0EwHhcN
+      MjMwMTAzMTg1NTQ1WhcNMzIxMjMxMTg1NTQ1WjByMQswCQYDVQQGEwJDQTEZMBcG
+      A1UECAwQQnJpdGlzaCBDb2x1bWJpYTEOMAwGA1UECgwFQW5uYWkxGDAWBgNVBAsM
+      D1RlYW0gS2FyYWJvb25kaTEeMBwGA1UEAwwVQW5uYWkgSW50ZXJtZWRpYXRlIENB
+      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwGwiFHpC/y5l57Mtj205
+      MddT6pO0172+E7YPGjFeuqRwGTAAoIfSoyWk6jWS/ZF3Obk+ZkqyKkDCuF35NW/x
+      UebDr5pQMFO/grEpvzQ5SvMpYqTYBXoalZvqrUiA5Y+zv38aMuS3QqEPruUQzDk6
+      gaBQ9dXn3qMqAjsfosDMfBDd2AZlxQyQHeq5CN3wz6WlEQrThcb1jgCVt3+mENCa
+      2Rj0foOby4GWqD1iBBKMNi/wlmi9c9ejsoAAPRL2c0loe+3lwupKorL5knPThbbu
+      zoapTMe1kqcYUSi0Qu4+5tFyKywNl8aGOtsJEGFr+tGtf9VTy+eDVB9cZIp+ftM5
+      rwIDAQABo2YwZDAdBgNVHQ4EFgQUhD6/KQZYzo4/YSFDXX/PFJnzUEMwHwYDVR0j
+      BBgwFoAUQcJXklvGhZtRkzu4UJYdpLfoPC8wEgYDVR0TAQH/BAgwBgEB/wIBADAO
+      BgNVHQ8BAf8EBAMCAYYwDQYJKoZIhvcNAQELBQADggIBALA0Qgo8o515EROLaFi9
+      o21lhcElBIn3XStxlzJdxatgITbb5TuHohUehPA9WOppGU3QXpwKQiMr8Rb9rCEV
+      UTcgY/ETyzVxWZTJhmPLXdGX5nBB1KdXAuVSkKDHxcyNSzJI2yJfUYRae+l8ES7b
+      1eC6ZcsPvFGNoVXyowgEhT0NWQmIhwJUN4X2Goh90ko7S2vs+eDsBsZiQg8AGz8g
+      r32hY+7YF3AyjTJqCJxaqpZhLYz5Kc0DGPH3x/6N+5mi0P+KdJWl2BVv5gK6VVwe
+      R83t9ZlhtWT1jxl+JCDS23oIGLqNGREl3ANsmWnXpMXI9Y60cVwzICa6EBAgM5iB
+      gCzPCj+Zi2w3VQFn9WHBDpr51T/Cvk76kw82hnRszZbJGfa7h13IM77I10z0h546
+      emoOegPiIxfvqmF9qopdSm84eU9Hxgtk1Q4PPQZNFeTufR4JpttXt1PJ3l3bhZgW
+      2DkHyOByVz5A2vV36GHHczZcGf5AEs+/KaNpI72ki4GF6kvr1kIBpgAmq6o2sqEP
+      rg9DDHUVl1PUthSCdSBJD9bgaHRyKsCmOX8eUlcJIi7qsniyC4Tofd5ObVElF+bS
+      9bnFcM9ju0JyuAJzWV4EX7ZvuvltIosD/jVChKhd46QJDGoPF/99kbATZCn8wniN
+      p9GwZrQAoxB/KrMgvoYOxUYc
+      -----END CERTIFICATE-----
+    id: d5d6054f-c32d-44e6-b9b9-a922580538d4
+    snis:
+      - name: karaboondi.com
+    key:  |
+      -----BEGIN RSA PRIVATE KEY-----
+      MIIEpAIBAAKCAQEAuWVNDWiSl/uCE6sOb4xVjjpM6+n5GK7FhTN6FavUlPnpDAEH
+      Uc6eIyGsln+gMdvg9blAk+aFtfTyPZTUIh1cSDIphIpcuHBm5UEF4pW8XHl/mBq5
+      E2a3udR+Ses2sHtmpdTOefreWpHIkFW5H7PYt/WTplQqC0+DEEVkTDlX7UIQ+nE2
+      HBCWphwgQ0xspS6W+toyL6dYwOHof1EsRiGJg0a5cl9rpMLAAvpEBQq4c5dBWnDa
+      wQax2jA4Nv01z1aQx/q+9pLcsRKaqevbu8IuUI0C4sxn7zhA5SvDyd0hPsX48pVx
+      XlGCmmntTRUZs5CIwY+xshqXbFPyeFHZkQw4ewIDAQABAoIBAQCbcB55Jnr56An4
+      OYvB5JP6ylCh3ypVEntSoYUzVDzIpvtIcDhV03jslZghGmISS3rCKo7FMhpbI0JS
+      dUyiSaGMeloq4OK6VKtAfRLVFZu2oLtkqMsRRCa4LDux9/6DWwMF+HUg+j+hCedx
+      dB3hQaVrHv+rDZeuofyOEM/1xII+zZ8krUTGURqZLaR9TCIghdh2S+Y4fQ8Rs2AW
+      ExyCTOvLjZc3hovfdia1J400qdqJWuID9lk7LWYl/Y7RqXAKl2t9rImWN8EFdQZZ
+      zWh8eagQMMdazrpaHGs8HgO0te+ZFL73iqFY8aswDhx0lnPFQz3HAhNKoGswefhv
+      xoYdhnjZAoGBANnzL6FOvUQRZLTwXNfwDKI6Ev95AFVTGPfu3MnGlgPTbRDTOwZJ
+      k2aVmkYqDTFwNCJrJ8flLas9X6P7UMJC2sUKSNX9CSwMz42ilnMKwuo1sI/hO8TV
+      B8ggJ1bhIhHKW0p65+4vVn7CnFDSi6kiZRZ9o1MNysAy+i3OC8H3XDjNAoGBANnD
+      K/mnSPdH+fTas6/gQIwf2nX3AG6BAFnA/dU4aw2OX45GNixGDl4Co9IiULMWM/0C
+      Ilsu5ZNkjuuObk5N5rmZKJ79jDWdOzEmpLpJHl4DuG6vOIeEU/B7I0dD8AltBqDm
+      J5pcCupqTh1HckJkiAyUqkLhSmnu0I4tzG05TtZnAoGANJdP2PatCO3BhT+yx5Bv
+      G/4zc135TJ1+muUSdcXrkQTFfpfZ2EyMuuZCkce340QV8HA26y9L89Qdbe5IsHd9
+      Xqp6pNgoDG8S7jRbZWslWWqXLkDFMVvOQuYvV/F/TRetK624pWrazj+bhI0pkihw
+      iBrM/E+JqxMh90eO4sETickCgYEAgfc0JbormDpC+loU6CEFJRxVvBYBEfK4DNlc
+      JYeYjOyuJzHMXzwokv8sWtvUIi5cNOKzMoyYxBE+I2RMfTuNOrQoREu7BLykeT9B
+      DVVaZG4AAz9ck7TsjBhSA9SOTHHfhOQYOs44TZPIrzzW+r0ZXbjUrTncucCohFLd
+      MUsEvH0CgYAjoDyyRHBQYftpbRCTQvElKnKeV4Di79SP3KoyEV6hdcSqHBooUTWH
+      ycZ3nPdggmZ4F6AGW5oSKdYxWgVghMc5RQJbRQKDOTT4N1BHyUHu61NEFkRw8o4Y
+      w2EfAGXyC5G0SUvKcXME2/9Mq8LDYe/isJR746XilWJzKlXhl16ZIQ==
+      -----END RSA PRIVATE KEY-----
